@@ -8,20 +8,28 @@ public class SelectSort {
 
     public static void sortExec(int[] array){
 
-        int k=0;
-        for(int i=1;i<array.length;i++){
+        for(int i = 0;i < array.length - 1;i++){
+            int min = i;
+            for(int j = i + 1;j < array.length;j++){
+                if(array[i] > array[j]){
+                    min = j;
+                }
+            }
+            int tmp = array[i];
+            array[i] = array[min];
+            array[min] = tmp;
         }
 
     }
 
     public static void main(String[] args){
 
-        QuickSort qs = new QuickSort();
+        SelectSort ss = new SelectSort();
 
-        qs.sortExec(qs.array, 0, qs.array.length - 1);
+        ss.sortExec(ss.array);
 
-        for(int i = 0; i < qs.array.length;i++){
-            System.out.println(qs.array[i]);
+        for(int i = 0; i < ss.array.length;i++){
+            System.out.println(ss.array[i]);
 
         }
 
