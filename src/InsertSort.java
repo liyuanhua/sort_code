@@ -5,7 +5,7 @@ public class InsertSort {
 
     int[] array = {3,1,2,5,4};
 
-    public void sortExec(int[] array){
+    public void sortExec(int[]  array){
 
         for(int i = 1;i < array.length;i++){
             for(int j = i;j > 0 && array[j] < array[j-1];j--){
