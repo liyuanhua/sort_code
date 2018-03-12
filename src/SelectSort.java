@@ -1,17 +1,15 @@
 /**
  * Created by liyuanhua on 16/3/29.
  */
+
 public class SelectSort {
 
-    int[] array = {3,1,2,5,4};
-
-
-    public static void sortExec(int[] array){
-
-        for(int i = 0;i < array.length - 1;i++){
+    public int[] sortExec(int[] array){
+        int len = array.length;
+        for(int i=0; i<len; i++){
             int min = i;
-            for(int j = i + 1;j < array.length;j++){
-                if(array[min] > array[j]){
+            for(int j=min+1; j<len; j++){
+                if(array[j] < array[min]){
                     min = j;
                 }
             }
@@ -19,19 +17,16 @@ public class SelectSort {
             array[i] = array[min];
             array[min] = tmp;
         }
-
+        return array;
     }
-
     public static void main(String[] args){
+        int[] array = {3,1,2,5,4,2,11,87,12};
 
         SelectSort ss = new SelectSort();
+        int[] res = ss.sortExec(array);
 
-        ss.sortExec(ss.array);
-
-        for(int i = 0; i < ss.array.length;i++){
-            System.out.println(ss.array[i]);
-
-        }
+        for(int i=0; i<res.length; i++)
+            System.out.println(res[i]);
 
     }
 }

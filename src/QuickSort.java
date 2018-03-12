@@ -1,68 +1,47 @@
 /**
  * Created by liyuanhua on 16/3/29.
  */
-public class QuickSort {
+public class QuickSort{
 
-    int[] array = {3,1,2,5,4};
+    public void sortExec(int[] array, int l, int r){
 
-    public static void sortExec(int[] array,int l,int r){
+        if(l >= r)
+            return;
 
-       if(l < r){
+        int i = l;
+        int j= r;
+        int p = array[l];
 
-           int i = l;
-           int j = r;
-           int key = array[l];
+        while(i<j) {
+            while (array[j] >= p && i < j) {
+                j--;
+            }
+            while (array[i] <= p && i < j) {
+                i++;
+            }
 
-           while(i < j){
+            if(i<j){
+                int tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+            }
+        }
+        array[l] = array[i];
+        array[i] = p;
 
-               while(i < j && key < array[j]){
-                   j--;
-               }
-
-               if(i < j){
-                   array[i] = array[j];
-                   i++;
-               }
-
-               while(i < j && key > array[i]){
-                   i++;
-               }
-
-               if(i < j){
-                   array[j] = array[i];
-                   j--;
-               }
-
-
-
-           }
-
-           array[i] = key;
-
-           sortExec(array,l,j - 1);
-           sortExec(array,j + 1,r);
-
-
-
-
-
-       }
+        sortExec(array, l, i-1);
+        sortExec(array, i+1, r);
 
     }
 
     public static void main(String[] args){
-
+        int[] array = {2,1,4,5,3};
         QuickSort qs = new QuickSort();
 
-        qs.sortExec(qs.array,0,qs.array.length - 1 );
+        qs.sortExec(array, 0, array.length-1);
 
-        for(int i = 0; i < qs.array.length;i++){
-            System.out.println(qs.array[i]);
-
+        for(int i=0;i< array.length;i++){
+            System.out.println(array[i]);
         }
-
     }
-
-
-
 }
